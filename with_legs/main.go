@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Hi, %s, this is my toy language!", user.Username)
-	fmt.Println("You can now type commands")
+	fmt.Printf("Hi, %s, this is my toy language!\n", user.Username)
+	fmt.Printf("You can now type commands\n")
 	repl.Start(os.Stdin, os.Stdout)
 }
