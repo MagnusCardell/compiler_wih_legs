@@ -2,25 +2,20 @@ package token
 
 type TokenType string
 
-type Token struct {
-	Type TokenType
-	Literal string
-}
-
-const {
+const (
 	ILLEGAL = "ILLEGAL" // represents tokens not supported
-	EOF = "EOF"			// represents end of file, lexer stops
+	EOF     = "EOF"     // represents end of file, lexer stops
 
 	// Identifiers + literals
 	IDENT = "IDENT" // functions
-	INT = "INT" 
+	INT   = "INT"
 
 	// Operators
 	ASSIGN = "="
-	PLUS = "+"
+	PLUS   = "+"
 
 	// Delimiters
-	COMMA = ","
+	COMMA     = ","
 	SEMICOLON = ";"
 
 	LPAREN = "("
@@ -30,5 +25,10 @@ const {
 
 	// Keywords
 	FUNCTION = "FUNCTION"
-	LET = "LET"
+	LET      = "LET"
+)
+
+type Token struct {
+	Type    TokenType
+	Literal string
 }
