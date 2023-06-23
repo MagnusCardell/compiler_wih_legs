@@ -31,3 +31,7 @@ Console/interpreter to give input to be read, evaluated, and returned. Interpret
 ## Parsing
 
 Turn input into a data structure. Most interpreters use abstract syntax tree. Abstract because its not a full representation of the input. All input syntax is needed for the parser to understand and create the syntax tree. 
+
+### Parser generators
+Parser generators take a formal definition of a language to produce parsers as output. This parser can produce the syntax tree we want. Majority of existing parser generators ( yacc, bison, ANTLR)  use context-free grammar. A common notation of CFGs are Backus-Naur Form (BNF). Also Extended BNF (EBNF). While this can be considered a solved problem with excellent solutions and formal proofs, I attempt to write one from scratch to understand the problems. 
+
