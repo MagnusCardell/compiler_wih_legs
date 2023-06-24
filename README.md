@@ -35,3 +35,7 @@ Turn input into a data structure. Most interpreters use abstract syntax tree. Ab
 ### Parser generators
 Parser generators take a formal definition of a language to produce parsers as output. This parser can produce the syntax tree we want. Majority of existing parser generators ( yacc, bison, ANTLR)  use context-free grammar. A common notation of CFGs are Backus-Naur Form (BNF). Also Extended BNF (EBNF). While this can be considered a solved problem with excellent solutions and formal proofs, I attempt to write one from scratch to understand the problems. 
 
+```
+let <identifier> = <expression>;
+```
+expressions produce values but the whole row is a statement. The distinction between statement and expression vary for the language. For example, can functions be 
