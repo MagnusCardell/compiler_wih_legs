@@ -9,14 +9,15 @@ import (
 func TestLetStatements(t *testing.T) {
 	input := `
 	let x = 5;
-	let y = 10;
-	let foo = 292;
+	let y = true;
+	let foo = y;
 	`
 
 	l := lexer.New(input)
 	p := New(l)
 
 	program := p.ParseProgram()
+	checkParserErrors(t, p)
 	if program == nil {
 		t.Fatalf("ParseProgram() returned nil")
 	}
@@ -26,9 +27,9 @@ func TestLetStatements(t *testing.T) {
 	tests := []struct {
 		expectedIdentifier string
 	}{
-		{"x"},
-		{"y"},
-		{"foo"},
+		{"let x = 5;"},
+		{"let y = true;"},
+		{"let foobar = y;"},
 	}
 	for i, tt := range tests {
 		stmt := program.Statements[i]
@@ -36,6 +37,19 @@ func TestLetStatements(t *testing.T) {
 			return
 		}
 	}
+}
+
+func checkParserErrors(t *testing.T, p *Parser) {
+	errors := p.Errors()
+	if len(errors) == 0 {
+		return
+	}
+
+	t.Errorf("parser has %d errors", len(errors))
+	for _, msg := range errors {
+		t.Errorf("parser error %q", msg)
+	}
+	t.FailNow()
 }
 
 func testLetStatement(t *testing.T, s ast.Statement, name string) bool {
